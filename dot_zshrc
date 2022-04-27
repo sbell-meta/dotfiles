@@ -81,7 +81,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws rust command-not-found docker-compose docker golang npm screen thefuck yarn zsh-autosuggestions bazel)
+plugins=(git aws rust command-not-found docker-compose docker golang npm screen thefuck yarn bazel)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,7 +114,11 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval $(thefuck --alias)
+which thefuck >/dev/null
+if [[ -$? -ne 0 ]]; then
+  eval $(thefuck --alias)
+fi
+
 
 # Single ESC to clear line
 bindkey '\e' kill-whole-line
@@ -128,3 +132,7 @@ alias downm="git fetch && git rebase origin/master"
 alias downd="git fetch && git rebase origin/develop"
 alias upload="git pull && git push"
 alias gs="git status"
+alias bz="bazel"
+alias bzr="bazel run"
+alias bzb="bazel build"
+alias bzt="bazel test"

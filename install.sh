@@ -1,11 +1,20 @@
 #!/bin/sh
+set -e
 
 GITHUB_USERNAME="Carlton-Perkins"
 
-# Ohmyzsh install
-sh $(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "" --unattended
+echo "[INSTALL] Ohmyzsh"
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
-# Powerlevel10k install
+echo "[INSTALL] Powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply $GITHUB_USERNAME
+echo "[INSTALL] Chezmoi"
+export BINDIR=$HOME/.local/bin
+sh -c "$(curl -fsLS chezmoi.io/get)"
+
+echo "[SETUP] Chezmoi"
+$BINDIR/chezmoi init $GITHUB_USERNAME
+
+echo "[APPLY] apply dotfiles"
+$BINDIR/chezmoi apply

@@ -101,6 +101,11 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
+# Load completions
+if command -v kubectl &>/dev/null; then
+  source <(kubectl completion zsh)
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

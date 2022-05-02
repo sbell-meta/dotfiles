@@ -106,6 +106,12 @@ if command -v kubectl &>/dev/null; then
   source <(kubectl completion zsh)
 fi
 
+if command -v skaffold &>/dev/null; then
+  source <(skaffold completion zsh)
+fi
+
+
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

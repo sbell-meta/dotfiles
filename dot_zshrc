@@ -110,7 +110,9 @@ if command -v skaffold &>/dev/null; then
   source <(skaffold completion zsh)
 fi
 
-
+if command -v hasura &>/dev/null; then
+  source <(hasura completion zsh --skip-update-check)
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

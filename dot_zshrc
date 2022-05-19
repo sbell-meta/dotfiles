@@ -110,6 +110,7 @@ if command -v skaffold &>/dev/null; then
   source <(skaffold completion zsh)
 fi
 
+export HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 if command -v hasura &>/dev/null; then
   source <(hasura completion zsh --skip-update-check)
 fi

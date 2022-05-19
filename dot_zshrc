@@ -112,7 +112,7 @@ fi
 
 export HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 if command -v hasura &>/dev/null; then
-  source <(hasura completion zsh --skip-update-check)
+  source <(hasura completion zsh --skip-update-check 2>/dev/null)
 fi
 
 # Compilation flags

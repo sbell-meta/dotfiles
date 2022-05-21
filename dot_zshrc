@@ -115,8 +115,16 @@ if command -v hasura &>/dev/null; then
   source <(hasura completion zsh --skip-update-check 2>/dev/null)
 fi
 
-if command -v diesel &>/dev/null; then
-  source <(diesel completions zsh)
+# if command -v diesel &>/dev/null; then
+#   source <(diesel completions zsh)
+# fi
+
+if command -v chezmoi &>/dev/null; then
+  source <(chezmoi completion zsh)
+fi
+
+if [[ -e /usr/share/nvm/init-nvm.sh ]]; then 
+  source '/usr/share/nvm/init-nvm.sh'
 fi
 
 # Compilation flags

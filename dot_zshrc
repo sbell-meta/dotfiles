@@ -115,6 +115,10 @@ if command -v hasura &>/dev/null; then
   source <(hasura completion zsh --skip-update-check 2>/dev/null)
 fi
 
+if command -v diesel &>/dev/null; then
+  source <(diesel completions zsh)
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
